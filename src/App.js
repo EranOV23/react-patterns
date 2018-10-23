@@ -36,6 +36,7 @@ class Amount extends Component {
           <span>New Israeli shekel: {this.state.amount} </span>
         </div>
 
+        {/*Rendered Here*/}
         <Euro amount={this.state.amount} />
         <Dollars amount={this.state.amount} />
       </div>
