@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 const App = () => <Amount />;
 
@@ -12,7 +12,7 @@ class Amount extends Component {
     super(props);
 
     this.state = {
-      amount: 0,
+      amount: 0
     };
   }
 
@@ -27,13 +27,13 @@ class Amount extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1>Currency Converter</h1>
-        </header>
-        <div className="App-body">
-          <button type="button" onClick={this.onIncrement}> + </button>
-          <button type="button" onClick={this.onDecrement}> - </button>
+        <div>
+          <button type="button" onClick={this.onIncrement}>
+            +
+          </button>
+          <button type="button" onClick={this.onDecrement}>
+            -
+          </button>
           <span>New Israeli shekel: {this.state.amount} </span>
         </div>
       </div>
