@@ -35,6 +35,10 @@ class Amount extends Component {
           <button type="button" onClick={this.onIncrement}> + </button>
           <button type="button" onClick={this.onDecrement}> - </button>
           <span>New Israeli shekel: {this.state.amount} </span>
+
+          <Euro amount={this.state.amount}/>
+          <Dollars amount={this.state.amount}/>
+
         </div>
       </div>
     );
