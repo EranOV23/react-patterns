@@ -1,20 +1,27 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-const App = () => <Amount />;
+import React, { Component } from "react";
+import "./App.css";
 
 const Euro = ({ amount }) => <p>Euro: {amount * 0.24}</p>;
 const Dollars = ({ amount }) => <p>Dollars: {amount * 0.27}</p>;
 
-class Amount extends Component {
-  constructor(props) {
-    super(props);
+const Amount = props => {
+  const { amount, onIncrement, onDecrement } = props;
+  return (
+    <div>
+      <span>US Dollar: {amount} </span>
 
-    this.state = {
-      amount: 0,
-    };
-  }
+      <button type="button" onClick={onIncrement}>
+        +
+      </button>
+      <button type="button" onClick={onDecrement}>
+        -
+      </button>
+    </div>
+  );
+};
+
+class App extends Component {
+  state = { amount: 0 };
 
   onIncrement = () => {
     this.setState(state => ({ amount: state.amount + 1 }));
@@ -27,19 +34,13 @@ class Amount extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1>Currency Converter</h1>
-        </header>
-        <div className="App-body">
-          <button type="button" onClick={this.onIncrement}> + </button>
-          <button type="button" onClick={this.onDecrement}> - </button>
-          <span>New Israeli shekel: {this.state.amount} </span>
-
-          <Euro amount={this.state.amount}/>
-          <Dollars amount={this.state.amount}/>
-
-        </div>
+        <Amount
+          amount={this.state.amount}
+          onIncrement={this.onIncrement}
+          onDecrement={this.onDecrement}
+        />
+        <Euro amount={this.state.amount} />
+        <Dollars amount={this.state.amount} />
       </div>
     );
   }
