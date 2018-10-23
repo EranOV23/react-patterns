@@ -8,7 +8,7 @@ const Amount = props => {
   const { amount, onIncrement, onDecrement } = props;
   return (
     <div>
-      <span>US Dollar: {amount} </span>
+      <span>New Israeli Shekel: {amount} </span>
 
       <button type="button" onClick={onIncrement}>
         +
