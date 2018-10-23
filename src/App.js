@@ -2,13 +2,25 @@ import React, { Component } from "react";
 import "./App.css";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      amount: 0
-    };
+  render() {
+    return (
+      <Amount>
+        {amount => (
+          <div>
+            <Euro amount={amount} />
+            <Dollars amount={amount} />
+          </div>
+        )}
+      </Amount>
+    );
   }
+}
+
+const Euro = ({ amount }) => <p>Euro: {amount * 0.24}</p>;
+const Dollars = ({ amount }) => <p>Dollars: {amount * 0.27}</p>;
+
+class Amount extends Component {
+  state = { amount: 0 };
 
   onIncrement = () => {
     this.setState(state => ({ amount: state.amount + 1 }));
@@ -19,39 +31,20 @@ class App extends Component {
   };
 
   render() {
-    const { amount } = this.state;
-    return (
-      <Amount
-        amount={amount}
-        onIncrement={this.onIncrement}
-        onDecrement={this.onDecrement}
-      >
-        <Euro amount={amount} />
-        <Dollars amount={amount} />
-      </Amount>
-    );
-  }
-}
-
-const Euro = ({ amount }) => <p>Euro: {amount * 0.24}</p>;
-const Dollars = ({ amount }) => <p>Dollars: {amount * 0.27}</p>;
-
-class Amount extends Component {
-  render() {
     return (
       <div className="App">
         <div>
-          <button type="button" onClick={this.props.onIncrement}>
+          <button type="button" onClick={this.onIncrement}>
             +
           </button>
-          <button type="button" onClick={this.props.onDecrement}>
+          <button type="button" onClick={this.onDecrement}>
             -
           </button>
-          <span>New Israeli shekel: {this.props.amount} </span>
+          <span>New Israeli shekel: {this.state.amount} </span>
         </div>
 
         {/*Rendered Here*/}
-        {this.props.children}
+        {this.props.children(this.state.amount)}
       </div>
     );
   }
