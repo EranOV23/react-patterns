@@ -3,8 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 
 const App = () => <Amount />;
-const Euro = ({ amount }) => <p>Euro: {amount * 0.86}</p>;
-const Pound = ({ amount }) => <p>Pound: {amount * 0.76}</p>;
+
+const Euro = ({ amount }) => <p>Euro: {amount * 0.24}</p>;
+const Dollars = ({ amount }) => <p>Dollars: {amount * 0.27}</p>;
 
 class Amount extends Component {
   constructor(props) {
@@ -33,9 +34,7 @@ class Amount extends Component {
         <div className="App-body">
           <button type="button" onClick={this.onIncrement}> + </button>
           <button type="button" onClick={this.onDecrement}> - </button>
-          <span>US Dollar: {this.state.amount} </span>
-          <Euro amount={this.state.amount} />
-          <Pound amount={this.state.amount} />
+          <span>New Israeli shekel: {this.state.amount} </span>
         </div>
       </div>
     );
