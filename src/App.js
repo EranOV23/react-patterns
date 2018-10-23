@@ -1,6 +1,30 @@
 import React, { Component } from "react";
 import "./App.css";
 
+const Euro = ({ amount }) => <p>Euro: {amount * 0.24}</p>;
+const Dollars = ({ amount }) => <p>Dollars: {amount * 0.27}</p>;
+
+class Amount extends Component {
+  render() {
+    return (
+      <div className="App">
+        <div>
+          <button type="button" onClick={this.props.onIncrement}>
+            +
+          </button>
+          <button type="button" onClick={this.props.onDecrement}>
+            -
+          </button>
+          <span>New Israeli shekel: {this.props.amount} </span>
+        </div>
+
+        {/*Rendered Here*/}
+        {this.props.children}
+      </div>
+    );
+  }
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -29,30 +53,6 @@ class App extends Component {
         <Euro amount={amount} />
         <Dollars amount={amount} />
       </Amount>
-    );
-  }
-}
-
-const Euro = ({ amount }) => <p>Euro: {amount * 0.24}</p>;
-const Dollars = ({ amount }) => <p>Dollars: {amount * 0.27}</p>;
-
-class Amount extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div>
-          <button type="button" onClick={this.props.onIncrement}>
-            +
-          </button>
-          <button type="button" onClick={this.props.onDecrement}>
-            -
-          </button>
-          <span>New Israeli shekel: {this.props.amount} </span>
-        </div>
-
-        {/*Rendered Here*/}
-        {this.props.children}
-      </div>
     );
   }
 }
