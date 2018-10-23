@@ -5,27 +5,6 @@ const Euro = ({ amount }) => <p>Euro: {amount * 0.24}</p>;
 const Dollars = ({ amount }) => <p>Dollars: {amount * 0.27}</p>;
 
 class Amount extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div>
-          <button type="button" onClick={this.props.onIncrement}>
-            +
-          </button>
-          <button type="button" onClick={this.props.onDecrement}>
-            -
-          </button>
-          <span>New Israeli shekel: {this.props.amount} </span>
-        </div>
-
-        {/*Rendered Here*/}
-        {this.props.children}
-      </div>
-    );
-  }
-}
-
-class App extends Component {
   constructor(props) {
     super(props);
 
@@ -43,13 +22,29 @@ class App extends Component {
   };
 
   render() {
-    const { amount } = this.state;
     return (
-      <Amount
-        amount={amount}
-        onIncrement={this.onIncrement}
-        onDecrement={this.onDecrement}
-      >
+      <div className="App">
+        <div>
+          <button type="button" onClick={this.onIncrement}>
+            +
+          </button>
+          <button type="button" onClick={this.onDecrement}>
+            -
+          </button>
+          <span>New Israeli shekel: {this.state.amount} </span>
+        </div>
+
+        {/*Rendered Here*/}
+        {this.state.children}
+      </div>
+    );
+  }
+}
+
+class App extends Component {
+  render() {
+    return (
+      <Amount>
         <Euro amount={amount} />
         <Dollars amount={amount} />
       </Amount>
