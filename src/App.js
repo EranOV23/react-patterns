@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 const App = () => <Amount />;
 const Euro = ({ amount }) => <p>Euro: {amount * 0.86}</p>;
@@ -11,7 +11,7 @@ class Amount extends Component {
     super(props);
 
     this.state = {
-      amount: 0,
+      amount: 0
     };
   }
 
@@ -31,8 +31,12 @@ class Amount extends Component {
           <h1>Currency Converter</h1>
         </header>
         <div className="App-body">
-          <button type="button" onClick={this.onIncrement}> + </button>
-          <button type="button" onClick={this.onDecrement}> - </button>
+          <button type="button" onClick={this.onIncrement}>
+            +
+          </button>
+          <button type="button" onClick={this.onDecrement}>
+            -
+          </button>
           <span>US Dollar: {this.state.amount} </span>
           <Euro amount={this.state.amount} />
           <Pound amount={this.state.amount} />
